@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcca157fd731f884b9e7e8803a31aaca, type: 3}
+  m_Name: UnitData_C1
+  m_EditorClassIdentifier: 
+  UnitName: C1
+  UnitPrefab: {fileID: 1669637343444317294, guid: b99c8ba30bab94b4b8938c603569fb43, type: 3}
+  Icon: {fileID: -73879350, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
+  Cost: 3
+  Health: 100
+  AttackDamage: 10
