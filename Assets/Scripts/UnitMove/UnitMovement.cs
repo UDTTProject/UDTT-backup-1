@@ -9,8 +9,9 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class UnitMovement : MonoBehaviour
 {
+    [SerializeField] private BaseStatusData baseStatusData;
     [Header("Movement Settings")]
-    [SerializeField] private float speed = 5f; // 유닛의 이동 속도
+    public float speed => baseStatusData.moveSpeed; // 유닛의 이동 속도
     [SerializeField, Range(0.5f, 5f), Tooltip("유닛들 사이의 간격을 조절합니다. 값이 클수록 유닛들이 더 넓게 배치됩니다.")]
     private float formationSpacing = 0.5f; // 포메이션에서 유닛 간 간격
     [SerializeField] private float unitRadius = 0.5f; // 유닛의 충돌 반경
