@@ -6,22 +6,16 @@ using UnityEngine.Events;
 /// </summary>
 public class UnitStatus : MonoBehaviour
 {
-    [Header("Basic Stats")]
-    [SerializeField] private float maxHealth = 100f;        // 최대 체력
-    [SerializeField] private float currentHealth = 100f;           // 현재 체력
-    [SerializeField] private float attackDamage = 10f;      // 공격력
-    [SerializeField] private float defense = 5f;            // 방어력
-    
-    [Header("Attack Range")]
-    [SerializeField] private float attackRange = 2f;        // 공격 사거리
-    
+    [Header("Base Status Data")]
+    [SerializeField] private BaseStatusData baseStatusData;  // BaseStatusData 참조
+
     [Header("Attack Timing")]
-    [SerializeField] private float preAttackDelay = 0.5f;   // 공격 선딜레이
-    [SerializeField] private float postAttackDelay = 0.3f;  // 공격 후딜레이
-    [SerializeField] private float attackSpeed = 1f;        // 공격 속도 배율 (1이 기본)
+    [SerializeField] private float preAttackDelay;   // 공격 선딜레이
+    [SerializeField] private float postAttackDelay;  // 공격 후딜레이
+    [SerializeField] private float attackSpeed;      // 공격 속도 배율 (1이 기본)
 
     [Header("Death Effect")]
-    [SerializeField] private float deathFadeTime = 1.0f;    // 사망 시 페이드 아웃 시간
+    [SerializeField] private float deathFadeTime;    // 사망 시 페이드 아웃 시간
     [SerializeField] private bool useDeathAnimation = true; // 사망 애니메이션 사용 여부
 
     // 체력 변경 이벤트
@@ -32,41 +26,39 @@ public class UnitStatus : MonoBehaviour
     private float lastAttackTime;                           // 마지막 공격 시간
     private bool isDead = false;                           // 사망 상태
     private SpriteRenderer spriteRenderer;                 // 스프라이트 렌더러 (2D)
-    private Collider2D collider2D;                        // 2D 콜라이더
+    private Collider2D collider12D;                        // 2D 콜라이더
     private UnitMovement movement;                        // 이동 컴포넌트
     private UnitHealthBar healthBar;                       // 체력바 참조
 
     // 프로퍼티들
-    public float MaxHealth => maxHealth;
+    public float MaxHealth => baseStatusData.maxHp;
     public float CurrentHealth 
     { 
-        get => currentHealth;
+        get => baseStatusData.currentHp;
         private set
         {
-            currentHealth = Mathf.Clamp(value, 0f, maxHealth);
-            onHealthChanged?.Invoke(currentHealth / maxHealth);
+            baseStatusData.currentHp = Mathf.Clamp(value, 0f, baseStatusData.maxHp);
+            onHealthChanged?.Invoke(baseStatusData.currentHp / baseStatusData.maxHp);
             
-            if (currentHealth <= 0 && !isDead)
+            if (baseStatusData.currentHp <= 0 && !isDead)
             {
                 Die();
             }
         }
     }
-    public float AttackDamage => attackDamage;
-    public float Defense => defense;
-    public float AttackRange => attackRange;
-    public float PreAttackDelay => preAttackDelay / attackSpeed;
-    public float PostAttackDelay => postAttackDelay / attackSpeed;
+    public float AttackDamage => baseStatusData.attackDamage;
+    public float Defense => baseStatusData.defence;
+    public float AttackRange => baseStatusData.attackRange;
     public bool IsAttacking => isAttacking;
 
     private void Start()
     {
-        CurrentHealth = maxHealth;  // 프로퍼티 사용
+        CurrentHealth = baseStatusData.maxHp;  // 프로퍼티 사용
         lastAttackTime = -999f;
         
         // 컴포넌트 참조
         spriteRenderer = GetComponent<SpriteRenderer>();
-        collider2D = GetComponent<Collider2D>();
+        collider12D = GetComponent<Collider2D>();
         movement = GetComponent<UnitMovement>();
         healthBar = GetComponent<UnitHealthBar>();
         
@@ -86,7 +78,7 @@ public class UnitStatus : MonoBehaviour
     {
         if (isDead) return 0;
 
-        float actualDamage = Mathf.Max(1, damage - defense);
+        float actualDamage = Mathf.Max(1, damage - baseStatusData.defence);
         CurrentHealth = CurrentHealth - actualDamage;  // 프로퍼티 사용
         return actualDamage;
     }
@@ -129,7 +121,7 @@ public class UnitStatus : MonoBehaviour
         lastAttackTime = Time.time;
         
         // 선딜레이 후 공격 판정
-        Invoke(nameof(ExecuteAttack), PreAttackDelay);
+        Invoke(nameof(ExecuteAttack), preAttackDelay);
     }
 
     /// <summary>
@@ -141,7 +133,7 @@ public class UnitStatus : MonoBehaviour
         // 예: 범위 내의 적 탐지 및 데미지 처리
         
         // 후딜레이 후 공격 상태 종료
-        Invoke(nameof(EndAttack), PostAttackDelay);
+        Invoke(nameof(EndAttack), postAttackDelay);
     }
 
     /// <summary>
@@ -166,8 +158,8 @@ public class UnitStatus : MonoBehaviour
         // 컴포넌트 비활성화
         if (movement != null)
             movement.enabled = false;
-        if (collider2D != null)
-            collider2D.enabled = false;
+        if (collider12D != null)
+            collider12D.enabled = false;
 
         if (useDeathAnimation && spriteRenderer != null)
         {
@@ -216,16 +208,16 @@ public class UnitStatus : MonoBehaviour
     /// <summary>
     /// 능력치를 수정하는 메서드들
     /// </summary>
-    public void ModifyAttackDamage(float amount) => attackDamage = Mathf.Max(0, attackDamage + amount);
-    public void ModifyDefense(float amount) => defense = Mathf.Max(0, defense + amount);
-    public void ModifyAttackSpeed(float multiplier) => attackSpeed = Mathf.Max(0.1f, attackSpeed * multiplier);
-    public void ModifyAttackRange(float amount) => attackRange = Mathf.Max(0.1f, attackRange + amount);
+    public void ModifyAttackDamage(float amount) => baseStatusData.attackDamage = Mathf.Max(0, baseStatusData.attackDamage + amount);
+    public void ModifyDefense(float amount) => baseStatusData.defence = Mathf.Max(0, baseStatusData.defence + amount);
+    public void ModifyAttackSpeed(float multiplier) => baseStatusData.attackSpeed = Mathf.Max(0.1f, baseStatusData.attackSpeed * multiplier);
+    public void ModifyAttackRange(float amount) => baseStatusData.attackRange = Mathf.Max(0.1f, baseStatusData.attackRange + amount);
 
     // Update 메서드 추가
     private void Update()
     {
         // Inspector에서 currentHealth가 직접 수정되었을 때를 감지
-        if (currentHealth <= 0 && !isDead)
+        if (baseStatusData.currentHp <= 0 && !isDead)
         {
             Die();
         }
