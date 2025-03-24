@@ -15,6 +15,17 @@ public class SliderController : MonoBehaviour
     public float timeRemaining; // remain second
     private bool isRunning = false;
     // ---------------------------------------------------------
+    
+    // BaseStatusData 참조 추가
+    [SerializeField] private BaseStatusData baseStatusDataA;
+    [SerializeField] private BaseStatusData baseStatusDataB;
+    [SerializeField] private BaseStatusData baseStatusDataC;
+
+    public Button buttonA;
+    public Button buttonB;
+    public Button buttonC;
+
+    // ---------------------------------------------------------
     void Start()
     {
         StartCoroutine(FillSlider());
@@ -24,6 +35,11 @@ public class SliderController : MonoBehaviour
         
         // 초기 슬라이더 값 표시
         UpdateSliderValueText();
+
+        // 버튼 클릭 이벤트 등록
+        buttonA.onClick.AddListener(() => UseSkill(baseStatusDataA));
+        buttonB.onClick.AddListener(() => UseSkill(baseStatusDataB));
+        buttonC.onClick.AddListener(() => UseSkill(baseStatusDataC));
     }
 
     // 슬라이더 값을 텍스트로 표시하는 메서드
@@ -48,24 +64,6 @@ public class SliderController : MonoBehaviour
                 slider.value = Mathf.Lerp(startValue, endValue, elapsedTime / fillDuration);
                 UpdateSliderValueText(); // 슬라이더 값 업데이트
                 elapsedTime += Time.deltaTime;
-
-                if (Input.GetKeyDown(KeyCode.A) && slider.value >= 3)
-                {
-                    slider.value -= 3;
-                    Debug.Log("A키 감지: 슬라이더 값 3 감소");
-
-                    // 감소 후 다시 증가하도록 변수 재설정
-                    startValue = slider.value;
-                    endValue = Mathf.Min(startValue + 1, maxValue);
-                    elapsedTime = 0f;
-                    
-                    UpdateSliderValueText(); // 슬라이더 값 감소 후 업데이트
-                }
-
-                if (timeRemaining == 590)
-                {
-                    fillDuration = 1.5f;
-                }
 
                 yield return null;
             }
@@ -98,5 +96,16 @@ public class SliderController : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeRemaining / 60);
         int seconds = Mathf.FloorToInt(timeRemaining % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    // 버튼 클릭 시 호출할 메서드
+    private void UseSkill(BaseStatusData skillData)
+    {
+        if (skillData != null && slider.value >= skillData.cost)
+        {
+            slider.value -= skillData.cost;
+            Debug.Log($"스킬 사용: 슬라이더 값 {skillData.cost} 감소");
+            UpdateSliderValueText();
+        }
     }
 }

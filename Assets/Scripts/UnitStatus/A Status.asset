@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39643f7a4952f943b28e0dafe2638db, type: 3}
   m_Name: A Status
   m_EditorClassIdentifier: 
+  Icon: {fileID: 1390767339, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
+  UnitPrefab: {fileID: 1168408563243871051, guid: 456b0cebc9953cf4cb5e285583868873, type: 3}
+  cost: 1
   maxHp: 100
   currentHp: 100
   defence: 0
