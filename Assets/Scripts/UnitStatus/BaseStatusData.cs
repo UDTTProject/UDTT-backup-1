@@ -4,6 +4,18 @@ using UnityEngine;
 public class BaseStatusData : ScriptableObject
 {
     /// <summary>
+    /// 유닛 아이콘
+    /// </summary>
+    public Sprite Icon;
+    /// <summary>
+    /// 유닛 프리팹팹
+    /// </summary>
+    public GameObject UnitPrefab;
+    /// <summary>
+    /// 코스트트
+    /// </summary>
+    public float cost;
+    /// <summary>
     /// 최대 체력
     /// </summary>
     public float maxHp;
