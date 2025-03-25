@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203e55ff91786b44e8854b196887bee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  baseStatusData: {fileID: 11400000, guid: 9ba07568248f47b42959ea480108f815, type: 2}
   formationSpacing: 0.5
   unitRadius: 0.5
   unitLayer:
@@ -244,11 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7f6e635cc38ad4bbc51f6797261e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  attackDamage: 10
-  defense: 5
-  attackRange: 2
+  baseStatusData: {fileID: 11400000, guid: 9ba07568248f47b42959ea480108f815, type: 2}
   preAttackDelay: 0.5
   postAttackDelay: 0.3
   attackSpeed: 1
