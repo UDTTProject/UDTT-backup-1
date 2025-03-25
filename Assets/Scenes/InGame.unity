@@ -697,7 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 1683514280}
   spawnRadius: 2
-  resourceManager: {fileID: 2115123411}
+  resourceManager: {fileID: 0}
   availableUnits:
   - {fileID: 11400000, guid: 755acc67b3469e94a82b589455bc53a2, type: 2}
   - {fileID: 11400000, guid: e681890367b5e5d4f9d6b46acba8e27c, type: 2}
@@ -771,6 +771,24 @@ MonoBehaviour:
   buttonSpacing: {x: 5, y: 5}
   screenOffset: {x: -50, y: 40}
   screenAnchor: 3
+--- !u!114 &417572825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417572818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac3af30beb490144c975a79ed2a1bb29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitPrefab1: {fileID: 1168408563243871051, guid: 456b0cebc9953cf4cb5e285583868873, type: 3}
+  unitPrefab2: {fileID: 4054399642970552244, guid: 8ee4a4e6d29145543a76c583075d3f1e, type: 3}
+  unitPrefab3: {fileID: 1669637343444317294, guid: b99c8ba30bab94b4b8938c603569fb43, type: 3}
+  buttonA: {fileID: 2097282222}
+  buttonB: {fileID: 1955828136}
+  buttonC: {fileID: 534869240}
 --- !u!1001 &422191388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -871,6 +889,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 721211082069887915, guid: d58a714be4d79244685ad402c0f7401c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 417572823}
+    - targetCorrespondingSourceObject: {fileID: 721211082069887915, guid: d58a714be4d79244685ad402c0f7401c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 417572825}
   m_SourcePrefab: {fileID: 100100000, guid: d58a714be4d79244685ad402c0f7401c, type: 3}
 --- !u!1 &519420028
 GameObject:
