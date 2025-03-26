@@ -240,7 +240,6 @@ GameObject:
   m_Component:
   - component: {fileID: 254407634}
   - component: {fileID: 254407636}
-  - component: {fileID: 254407635}
   m_Layer: 5
   m_Name: Cost
   m_TagString: Untagged
@@ -269,30 +268,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -450}
   m_SizeDelta: {x: 945.5693, y: 118.1962}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &254407635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254407633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e55eed8d4828145aeeda9eb7169103, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 254407636}
-  fillDuration: 3
-  sliderValueText: {fileID: 1454713152}
-  timerText: {fileID: 1330831243}
-  startMinutes: 10
-  timeRemaining: 0
-  baseStatusDataA: {fileID: 11400000, guid: 9ba07568248f47b42959ea480108f815, type: 2}
-  baseStatusDataB: {fileID: 11400000, guid: f7962e3d9f3622a4d91d35fd8c602236, type: 2}
-  baseStatusDataC: {fileID: 11400000, guid: 07d49f19fbf92024e9f4a5580a3a5038, type: 2}
-  buttonA: {fileID: 2097282222}
-  buttonB: {fileID: 1955828136}
-  buttonC: {fileID: 534869240}
 --- !u!114 &254407636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1889,7 +1864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1350961078
 Transform:
   m_ObjectHideFlags: 0
@@ -2371,6 +2346,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1118104, y: 1.2555674}
   m_EdgeRadius: 0
+--- !u!1 &1519496595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1168408563243871051, guid: 456b0cebc9953cf4cb5e285583868873, type: 3}
+  m_PrefabInstance: {fileID: 7254485425272860291}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1683514279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,6 +2579,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92cec96c482b4214db21a807318319da, type: 3}
+--- !u!1 &1820688069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1669637343444317294, guid: b99c8ba30bab94b4b8938c603569fb43, type: 3}
+  m_PrefabInstance: {fileID: 731613373241502615}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1911486221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,49 +3071,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2115123409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0249b04c0c8390243b925e14099f5557, type: 3}
+  m_Script: {fileID: 11500000, guid: 08e55eed8d4828145aeeda9eb7169103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costSlider: {fileID: 254407635}
-  onResourcesChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1168408563243871051, guid: 456b0cebc9953cf4cb5e285583868873, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4054399642970552244, guid: 8ee4a4e6d29145543a76c583075d3f1e, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1669637343444317294, guid: b99c8ba30bab94b4b8938c603569fb43, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  slider: {fileID: 254407636}
+  fillDuration: 3
+  sliderValueText: {fileID: 1454713152}
+  timerText: {fileID: 1330831243}
+  startMinutes: 10
+  timeRemaining: 0
+  baseStatusDataA: {fileID: 11400000, guid: 9ba07568248f47b42959ea480108f815, type: 2}
+  baseStatusDataB: {fileID: 11400000, guid: f7962e3d9f3622a4d91d35fd8c602236, type: 2}
+  baseStatusDataC: {fileID: 11400000, guid: 07d49f19fbf92024e9f4a5580a3a5038, type: 2}
+  buttonA: {fileID: 2097282222}
+  buttonB: {fileID: 1955828136}
+  buttonC: {fileID: 534869240}
+  spawnPoint: {fileID: 1683514280}
+  spawnRadius: 2
+  unitPrefabA: {fileID: 1519496595}
+  unitPrefabB: {fileID: 1512963656}
+  unitPrefabC: {fileID: 1820688069}
 --- !u!1001 &235104597110503220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3324,6 +3286,10 @@ PrefabInstance:
       propertyPath: baseStatusData
       value: 
       objectReference: {fileID: 11400000, guid: 9ba07568248f47b42959ea480108f815, type: 2}
+    - target: {fileID: 8896439295447848973, guid: 456b0cebc9953cf4cb5e285583868873, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

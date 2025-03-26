@@ -23,6 +23,13 @@ public class SliderController : MonoBehaviour
     public Button buttonA;
     public Button buttonB;
     public Button buttonC;
+
+    [Header("Spawner Settings")]
+    [SerializeField] private Transform spawnPoint;        // 유닛이 생성될 위치
+    [SerializeField] private float spawnRadius = 2f;      // 생성 반경
+    [SerializeField] private GameObject unitPrefabA;  // 소환할 유닛 프리팹
+    [SerializeField] private GameObject unitPrefabB;  // 소환할 유닛 프리팹
+    [SerializeField] private GameObject unitPrefabC;  // 소환할 유닛 프리팹
 // ---------------------------------------------------------
     void Start()
     {
@@ -77,6 +84,7 @@ public class SliderController : MonoBehaviour
                             elapsedTime = 0f;
 
                             UpdateSliderValueText(); // 슬라이더 값 감소 후 업데이트
+                            SpawnUnitA();
                         }
                         else
                         {
@@ -103,6 +111,7 @@ public class SliderController : MonoBehaviour
                             elapsedTime = 0f;
 
                             UpdateSliderValueText(); // 슬라이더 값 감소 후 업데이트
+                            SpawnUnitB();
                         }
                         else
                         {
@@ -129,6 +138,7 @@ public class SliderController : MonoBehaviour
                             elapsedTime = 0f;
 
                             UpdateSliderValueText(); // 슬라이더 값 감소 후 업데이트
+                            SpawnUnitC();
                         }
                         else
                         {
@@ -152,6 +162,49 @@ public class SliderController : MonoBehaviour
         }
     }
 // ---------------------------------------------------------
+
+    void SpawnUnitA()
+        {
+            if (unitPrefabA == null) return; // 프리팹이 설정되지 않았으면 리턴
+
+            // 랜덤한 위치 계산 (spawnPoint를 중심으로 spawnRadius 반경 내)
+            Vector2 randomOffset = Random.insideUnitCircle * spawnRadius;
+            Vector3 spawnPosition = spawnPoint.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+
+            // 유닛 생성 (Instantiate를 사용하여 프리팹 클론 생성)
+            GameObject unitClone = Instantiate(unitPrefabA, spawnPosition, Quaternion.identity);
+
+            // 생성된 클론의 이름을 변경 (예: "Unit Clone (1)", "Unit Clone (2)" ...)
+            unitClone.name = "Unit Clone " + Time.time;
+        }
+      void SpawnUnitB()
+        {
+            if (unitPrefabB == null) return; // 프리팹이 설정되지 않았으면 리턴
+
+            // 랜덤한 위치 계산 (spawnPoint를 중심으로 spawnRadius 반경 내)
+            Vector2 randomOffset = Random.insideUnitCircle * spawnRadius;
+            Vector3 spawnPosition = spawnPoint.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+
+            // 유닛 생성 (Instantiate를 사용하여 프리팹 클론 생성)
+            GameObject unitClone = Instantiate(unitPrefabB, spawnPosition, Quaternion.identity);
+
+            // 생성된 클론의 이름을 변경 (예: "Unit Clone (1)", "Unit Clone (2)" ...)
+            unitClone.name = "Unit Clone " + Time.time;
+        }
+      void SpawnUnitC()
+        {
+            if (unitPrefabC == null) return; // 프리팹이 설정되지 않았으면 리턴
+
+            // 랜덤한 위치 계산 (spawnPoint를 중심으로 spawnRadius 반경 내)
+            Vector2 randomOffset = Random.insideUnitCircle * spawnRadius;
+            Vector3 spawnPosition = spawnPoint.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+
+            // 유닛 생성 (Instantiate를 사용하여 프리팹 클론 생성)
+            GameObject unitClone = Instantiate(unitPrefabC, spawnPosition, Quaternion.identity);
+
+            // 생성된 클론의 이름을 변경 (예: "Unit Clone (1)", "Unit Clone (2)" ...)
+            unitClone.name = "Unit Clone " + Time.time;
+        }
     IEnumerator TimerCountdown() // timer coroutine
     {
         isRunning = true;
