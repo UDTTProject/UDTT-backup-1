@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5a1d10a2d1aea3d42a4d93edc75a8723
+guid: e039beb29f0ba6245958fe8c6dcb13af
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2395810062553750391
-    second: 1742029860602_0
+      213: 8403215288983880825
+    second: hand_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -57,7 +57,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 7
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1742029860602_0
+      name: hand_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2135
-        height: 1305
+        width: 988
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 77b92dfee80af3120800000000000000
-      internalID: 2395810062553750391
+      spriteID: 974040f78c73e9470800000000000000
+      internalID: 8403215288983880825
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1742029860602_0: 2395810062553750391
+      hand_0: 8403215288983880825
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -30,6 +30,7 @@ public class HealthBarManager : MonoBehaviour
     [SerializeField] private GameObject healthBarPrefab;
     private Canvas worldSpaceCanvas;
 
+    // 시작함수
     private void Awake()
     {
         if (instance == null)
@@ -44,6 +45,7 @@ public class HealthBarManager : MonoBehaviour
         }
     }
 
+    // 초기화
     private void Initialize()
     {
         GameObject canvasObj = new GameObject("WorldSpaceCanvas");
@@ -60,6 +62,7 @@ public class HealthBarManager : MonoBehaviour
         canvasObj.AddComponent<GraphicRaycaster>();
     }
 
+    // 체력바 생성
     public GameObject CreateHealthBar()
     {
         if (healthBarPrefab == null || worldSpaceCanvas == null)
