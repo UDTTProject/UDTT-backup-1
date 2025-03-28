@@ -22,7 +22,7 @@ MonoBehaviour:
   postAttackDelay: 0
   attackDamage: 0
   attackSpeed: 0
-  attackRange: 0
+  attackRange: 2
   moveSpeed: 5
   deathFadeTime: 0
   useDeathAnimation: 1
